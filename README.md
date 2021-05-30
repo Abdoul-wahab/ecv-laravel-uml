@@ -27,4 +27,4 @@ php artisan migrate:fresh --seed
 
 ```
 
-Once the application's have been started, you may access the project in your web browser at: [http://localhost:8088](http://localhost:8088).
+Once the application's have been started, you may access the project in your web browser at: [http://127.0.0.1:8000](http://127.0.0.1:8000).
