@@ -25,6 +25,16 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::get('/vehicule', function () {
+    return view('vehicule');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+// Route::get('/dashboard', [AnnonceController::class, 'dashboard'])->name('home');
+
 Route::get('/privacy-policy', function () {
     return view('privacy-policy');
 });

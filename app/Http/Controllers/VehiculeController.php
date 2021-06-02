@@ -14,7 +14,20 @@ class VehiculeController extends Controller
      */
     public function index()
     {
-        //
+        $vehicules = vehicule::all()
+        ->map(function ($vehicule) {
+            return [
+                'uuid' => $vehicule->uuid,
+                'type' => $vehicule->type,
+                'marque' => $vehicule->marque,
+                'created_at' => $vehicule->created_at,
+                'updated_at' => $vehicule->updated_at,
+                'image_url' => str_replace('http://localhost', 'http://127.0.0.1:8000', $vehicule->getFirstMediaUrl('vehicules_images')),
+            ];
+        })
+        // ->whereNotNull('published_at')
+        ->sortBy('created_at');
+        return view('vehicule', [ 'vehicules' => $vehicules ]);
     }
 
     /**
@@ -24,7 +37,7 @@ class VehiculeController extends Controller
      */
     public function create()
     {
-        //
+        return view('create-vehicule');
     }
 
     /**
@@ -35,7 +48,24 @@ class VehiculeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'type' => 'required|string',
+            'marque' => 'required|string',
+            'image'  =>  'required|file',
+        ]);
+        
+        $vehicule = auth()->user()->vehicules()->create($validated);
+
+        if ($request->hasFile('image')) {
+            $vehicule->addMediaFromRequest('image')->toMediaCollection('vehicules_images');
+        }
+
+        if( $vehicule ){
+            return back()->withSuccess('Enregistré !');
+        }
+
+        return back()->with('error', 'Une erreur s\'est produite !!');
+        
     }
 
     /**
@@ -46,7 +76,7 @@ class VehiculeController extends Controller
      */
     public function show(Vehicule $vehicule)
     {
-        //
+        return view('vehicule', [ 'vehicule' => $vehicule ]);
     }
 
     /**
@@ -57,7 +87,7 @@ class VehiculeController extends Controller
      */
     public function edit(Vehicule $vehicule)
     {
-        //
+        return view('edit-vehicule' [ 'vehicule' => $vehicule ]);
     }
 
     /**
@@ -69,7 +99,12 @@ class VehiculeController extends Controller
      */
     public function update(Request $request, Vehicule $vehicule)
     {
-        //
+        if( auth()->user()->is( $vehicule->user ) ){
+            $vehicule->update();
+            return back()->withSuccess('Mise à jour !');
+        }
+        return back()->with('error', 'Une erreur s\'est produite !!');
+        return view('edit-vehicule' [ 'vehicule' => $vehicule ]);
     }
 
     /**
@@ -80,6 +115,10 @@ class VehiculeController extends Controller
      */
     public function destroy(Vehicule $vehicule)
     {
-        //
+        if( auth()->user()->is( $vehicule->user ) ){
+            $vehicule->delete();
+            return back()->withSuccess('Supprimmée !');
+        }
+        return back()->with('error', 'Une erreur s\'est produite !!');
     }
 }
