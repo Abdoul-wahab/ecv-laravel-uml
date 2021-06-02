@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Vehicule extends Model
 {
@@ -15,6 +17,7 @@ class Vehicule extends Model
      * @var array
      */
     protected $fillable = [
+        'uuid',
         'type',
         'marque',
     ];
@@ -24,9 +27,9 @@ class Vehicule extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function services(): BelongsToMany
+    public function team(): BelongsTo
     {
-        return $this->belongsToMany(Service::class, 'vehicule_service');
+        return $this->belongsTo(Team::class, 'team_id', 'id');
     }
 
     public function registerMediaCollections(): void

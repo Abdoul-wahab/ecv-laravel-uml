@@ -5,9 +5,9 @@ namespace App\Observers;
 use App\Models\Controle;
 use Illuminate\Support\Str;
 
-class ContratObserver
+class ControleObserver
 {
-    public function creating(Contrat $controle): void
+    public function creating(Controle $controle): void
     {
         $controle->uuid = Str::uuid();
     }

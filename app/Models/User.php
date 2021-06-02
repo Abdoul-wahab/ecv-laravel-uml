@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Enums\AccountType;
+use Illuminate\Notifications\Notifiable;
+use Laratrust\Traits\LaratrustUserTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    use LaratrustUserTrait;
     use HasFactory, Notifiable;
 
     /**
@@ -42,18 +45,31 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function vehicules(): HasMany
+     /**
+     * Get the current team of the user's context.
+     */
+    public function team(): BelongsTo
     {
-        return $this->hasMany(Vehicule::class);
+        return $this->belongsTo(Team::class, 'team_id');
     }
+
+    /**
+     * Check if user has already a "personal" team.
+     */
+    public function hasTeam(): bool
+    {
+        return $this->rolesTeams()->where('type', AccountType::LOUEUR)->exists();
+    }
+
+
 
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('annonces_images')
-            ->useDisk('annonces');
+        $this->addMediaCollection('users_images')
+            ->useDisk('users');
         
         $this->addMediaCollection('cover_picture')
             ->singleFile()
-            ->useDisk('annonces');
+            ->useDisk('users');
     }
 }

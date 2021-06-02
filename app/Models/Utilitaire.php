@@ -15,6 +15,6 @@ class Utilitaire extends Model
      * @var array
      */
     protected $fillable = [
-        'marque',
+        'poid',
     ];
 }
