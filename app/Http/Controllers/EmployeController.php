@@ -14,7 +14,7 @@ class EmployeController extends Controller
      */
     public function index()
     {
-        $employes = employe::all()
+        $employes = Employe::all()
         ->map(function ($employe) {
             return [
                 'uuid' => $employe->uuid,
@@ -71,10 +71,10 @@ class EmployeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\employe  $employe
+     * @param  \App\Models\Employe  $employe
      * @return \Illuminate\Http\Response
      */
-    public function show(employe $employe)
+    public function show(Employe $employe)
     {
         return view('employe', [ 'employe' => $employe ]);
     }
@@ -82,10 +82,10 @@ class EmployeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\employe  $employe
+     * @param  \App\Models\Employe  $employe
      * @return \Illuminate\Http\Response
      */
-    public function edit(employe $employe)
+    public function edit(Employe $employe)
     {
         return view('edit-employe' [ 'employe' => $employe ]);
     }
@@ -94,10 +94,10 @@ class EmployeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\employe  $employe
+     * @param  \App\Models\Employe  $employe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, employe $employe)
+    public function update(Request $request, Employe $employe)
     {
         if( auth()->user()->is( $employe->user ) ){
             $employe->update();
@@ -110,10 +110,10 @@ class EmployeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\employe  $employe
+     * @param  \App\Models\Employe  $employe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(employe $employe)
+    public function destroy(Employe $employe)
     {
         if( auth()->user()->is( $employe->user ) ){
             $employe->delete();

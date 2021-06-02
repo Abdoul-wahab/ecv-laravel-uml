@@ -15,7 +15,7 @@ class ControleController extends Controller
     
     public function index()
     {
-        $controles = controle::all()
+        $controles = Controle::all()
         ->map(function ($controle) {
             return [
                 'uuid' => $controle->uuid,
@@ -72,10 +72,10 @@ class ControleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\controle  $controle
+     * @param  \App\Models\Controle  $controle
      * @return \Illuminate\Http\Response
      */
-    public function show(controle $controle)
+    public function show(Controle $controle)
     {
         return view('controle', [ 'controle' => $controle ]);
     }
@@ -83,10 +83,10 @@ class ControleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\controle  $controle
+     * @param  \App\Models\Controle  $controle
      * @return \Illuminate\Http\Response
      */
-    public function edit(controle $controle)
+    public function edit(Controle $controle)
     {
         return view('edit-controle' [ 'controle' => $controle ]);
     }
@@ -95,10 +95,10 @@ class ControleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\controle  $controle
+     * @param  \App\Models\Controle  $controle
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, controle $controle)
+    public function update(Request $request, Controle $controle)
     {
         if( auth()->user()->is( $controle->user ) ){
             $controle->update();
@@ -111,10 +111,10 @@ class ControleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\controle  $controle
+     * @param  \App\Models\Controle  $controle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(controle $controle)
+    public function destroy(Controle $controle)
     {
         if( auth()->user()->is( $controle->user ) ){
             $controle->delete();

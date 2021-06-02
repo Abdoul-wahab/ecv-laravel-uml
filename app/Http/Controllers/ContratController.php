@@ -14,7 +14,7 @@ class ContratController extends Controller
      */
     public function index()
     {
-        $contrats = contrat::all()
+        $contrats = Contrat::all()
         ->map(function ($contrat) {
             return [
                 'uuid' => $contrat->uuid,
@@ -71,7 +71,7 @@ class ContratController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\contrat  $contrat
+     * @param  \App\Models\Contrat  $contrat
      * @return \Illuminate\Http\Response
      */
     public function show(contrat $contrat)
@@ -82,7 +82,7 @@ class ContratController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\contrat  $contrat
+     * @param  \App\Models\Contrat  $contrat
      * @return \Illuminate\Http\Response
      */
     public function edit(contrat $contrat)
@@ -94,7 +94,7 @@ class ContratController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\contrat  $contrat
+     * @param  \App\Models\Contrat  $contrat
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, contrat $contrat)
@@ -110,10 +110,10 @@ class ContratController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\contrat  $contrat
+     * @param  \App\Models\Contrat  $contrat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(contrat $contrat)
+    public function destroy(Contrat $contrat)
     {
         if( auth()->user()->is( $contrat->user ) ){
             $contrat->delete();

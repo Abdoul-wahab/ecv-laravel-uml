@@ -15,7 +15,7 @@ class LocationController extends Controller
     
     public function index()
     {
-        $locations = location::all()
+        $locations = Location::all()
         ->map(function ($location) {
             return [
                 'uuid' => $location->uuid,
@@ -72,10 +72,10 @@ class LocationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\location  $location
+     * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function show(location $location)
+    public function show(Location $location)
     {
         return view('location', [ 'location' => $location ]);
     }
@@ -83,10 +83,10 @@ class LocationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\location  $location
+     * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function edit(location $location)
+    public function edit(Location $location)
     {
         return view('edit-location' [ 'location' => $location ]);
     }
@@ -95,10 +95,10 @@ class LocationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\location  $location
+     * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, location $location)
+    public function update(Request $request, Location $location)
     {
         if( auth()->user()->is( $location->user ) ){
             $location->update();
@@ -111,10 +111,10 @@ class LocationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\location  $location
+     * @param  \App\Models\Location  $location
      * @return \Illuminate\Http\Response
      */
-    public function destroy(location $location)
+    public function destroy(Location $location)
     {
         if( auth()->user()->is( $location->user ) ){
             $location->delete();

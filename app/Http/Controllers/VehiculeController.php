@@ -14,7 +14,7 @@ class VehiculeController extends Controller
      */
     public function index()
     {
-        $vehicules = vehicule::all()
+        $vehicules = Vehicule::all()
         ->map(function ($vehicule) {
             return [
                 'uuid' => $vehicule->uuid,
