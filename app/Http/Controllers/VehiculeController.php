@@ -104,7 +104,6 @@ class VehiculeController extends Controller
             return back()->withSuccess('Mise à jour !');
         }
         return back()->with('error', 'Une erreur s\'est produite !!');
-        return view('edit-vehicule' [ 'vehicule' => $vehicule ]);
     }
 
     /**

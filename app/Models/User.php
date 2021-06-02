@@ -42,7 +42,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function vehicules(){
+    public function vehicules(): HasMany
+    {
+        return $this->hasMany(Vehicule::class);
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('annonces_images')
+            ->useDisk('annonces');
         
+        $this->addMediaCollection('cover_picture')
+            ->singleFile()
+            ->useDisk('annonces');
     }
 }
