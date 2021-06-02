@@ -18,6 +18,8 @@ class CreateVehiculesTable extends Migration
             $table->string('type');
             $table->string('marque');
             $table->timestamps();
+            $table->string('type');
+            $table->string('marque');
         });
     }
 

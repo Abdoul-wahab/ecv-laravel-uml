@@ -16,6 +16,9 @@ class CreateContratsTable extends Migration
         Schema::create('contrats', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('id_client');
+            $table->string('id_vehicule');
+            $table->string('id_vehicule');
         });
     }
 
