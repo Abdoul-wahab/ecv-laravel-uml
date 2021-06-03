@@ -9,8 +9,8 @@
                 <img class="h-full w-full rounded-md object-cover max-w-lg mx-auto" src="{{ asset('img/2.jpeg') }}" alt="Nike Air">
             </div>
             <div class="w-full max-w-lg mx-auto mt-5 md:ml-8 md:mt-0 md:w-1/2">
-                <h3 class="text-gray-700 uppercase text-lg">Ma voiture test</h3>
-                <span class="text-gray-500 mt-3">$125</span>
+                <h3 class="text-gray-700 uppercase text-lg">Contrôle</h3>
+                <span class="text-gray-500 mt-3">{{controle->date}}</span>
                 <hr class="my-3">
                 {{-- <div class="mt-2">
                     <label class="text-gray-700 text-sm" for="count">Nombre de véhicules souhaité:</label>

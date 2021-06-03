@@ -78,7 +78,7 @@ class ControleController extends Controller
      */
     public function edit(Controle $controle)
     {
-        return view('controle.edit-controle', [ 'controle' => $controle ]);
+        return view('controle.edit-controle' [ 'controle' => $controle ]);
     }
 
     /**

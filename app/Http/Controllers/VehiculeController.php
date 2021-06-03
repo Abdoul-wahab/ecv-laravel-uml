@@ -17,7 +17,7 @@ class VehiculeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'admin']);
+        $this->middleware(['auth', 'admin', 'client', 'employe'], ['except' => ['index']]);
     }
 
     /**
@@ -33,9 +33,13 @@ class VehiculeController extends Controller
                 'uuid' => $vehicule->uuid,
                 'type' => $vehicule->type,
                 'permis' => $vehicule->permis,
+<<<<<<< HEAD
                 'marque' => $vehicule->marque,
                 'created_at' => $vehicule->created_at,
                 // 'image_url' => str_replace('http://localhost', 'http://127.0.0.1:8000', $vehicule->getFirstMediaUrl('annonces_images')),
+=======
+                'marque' => $vehicule->marque
+>>>>>>> a73d7c14a10d488ad9d29089c152db2e2a27ff09
             ];
         })
         // ->whereNotNull('published_at')
@@ -60,14 +64,13 @@ class VehiculeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {  
         $validated = $request->validate([
             'type' => 'required|string|max:255',
             'permis' => 'required|string|max:255',
             'marque' => 'required|string|max:255',
-            'prix'  => 'required|string|max:255',
-            // 'image'  =>  'required|file|mimes:jpeg,png,pdf,jpg|max:8192',
         ]);
+<<<<<<< HEAD
 
         $team = Team::where('type', AccountType::LOUEUR)->first();
         
@@ -76,6 +79,10 @@ class VehiculeController extends Controller
         if ($request->hasFile('image')) {
             $vehicule->addMediaFromRequest('image')->toMediaCollection('vehicules_images');
         }
+=======
+        
+        $vehicule = auth()->user()->vehicules()->create($validated);
+>>>>>>> a73d7c14a10d488ad9d29089c152db2e2a27ff09
 
         if( $vehicule ){
             return back()->withSuccess('Enregistré !');
@@ -104,7 +111,7 @@ class VehiculeController extends Controller
      */
     public function edit(Vehicule $vehicule)
     {
-        return view('vehicule.edit-vehicule', [ 'vehicule' => $vehicule ]);
+        return view('vehicule.edit-vehicule' [ 'vehicule' => $vehicule ]);
     }
 
     /**
