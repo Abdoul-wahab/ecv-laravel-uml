@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livraison;
+namespace App\Observers;
 
 use App\Models\Livraison;
 use Illuminate\Support\Str;

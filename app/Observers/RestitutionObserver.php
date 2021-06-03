@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Restitution;
+namespace App\Observers;
 
 use App\Models\Restitution;
 use Illuminate\Support\Str;

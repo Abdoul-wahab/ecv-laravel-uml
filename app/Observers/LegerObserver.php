@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Leger;
+namespace App\Observers;
 
 use App\Models\Leger;
 use Illuminate\Support\Str;

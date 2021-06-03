@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Permission;
+namespace App\Observers;
 
 use App\Models\Permission;
 use Illuminate\Support\Str;

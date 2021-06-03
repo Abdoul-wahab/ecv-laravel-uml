@@ -33,9 +33,9 @@ Route::get('/vehicule', function () {
     return view('vehicule');
 });
 
-Route::get('/create-vehicule', function () {
-    return view('vehicule.create-vehicule');
-});
+// Route::get('/create-vehicule', function () {
+//     return view('vehicule.create-vehicule');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -80,4 +80,5 @@ Route::get('/vehicule-create', [VehiculeController::class, 'create'])->name('veh
 Route::get('/edit-vehicule/{vehicule}', [VehiculeController::class, 'edit'])->name('edit-vehicule');
 Route::get('/update-vehicule', [VehiculeController::class, 'update'])->name('update-vehicule');
 Route::get('/index', [VehiculeController::class, 'index'])->name('index');
+Route::post('/vehicule-store', [VehiculeController::class, 'create'])->name('vehicule-store');
 

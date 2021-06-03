@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Role;
+namespace App\Observers;
 
 use App\Models\Role;
 use Illuminate\Support\Str;

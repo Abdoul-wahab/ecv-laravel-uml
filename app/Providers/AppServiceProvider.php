@@ -2,36 +2,36 @@
 
 namespace App\Providers;
 
-use App\Models\Conformite;
-use App\Models\Contrat;
-use App\Models\Controle;
-use App\Models\Leger;
-use App\Models\Livraison;
-use App\Models\Location;
-use App\Models\Permission;
-use App\Models\Restitution;
 use App\Models\Role;
 use App\Models\Team;
 use App\Models\User;
-use App\Models\Utilitaire;
+use App\Models\Leger;
+use App\Models\Contrat;
+use App\Models\Controle;
+use App\Models\Location;
 use App\Models\Vehicule;
+use App\Models\Livraison;
+use App\Models\Conformite;
+use App\Models\Permission;
+use App\Models\Utilitaire;
+use App\Models\Restitution;
 
-use App\Observers\ConformiteObserver;
-use App\Observers\ContratObserver;
-use App\Observers\ControleObserver;
-use App\Observers\LegerObserver;
-use App\Observers\LivraisonObserver;
-use App\Observers\LocationObserver;
-use App\Observers\PermissionObserver;
-use App\Observers\RestitutionObserver;
 use App\Observers\RoleObserver;
 use App\Observers\TeamObserver;
 use App\Observers\UserObserver;
-use App\Observers\UtilitaireObserver;
+use App\Observers\LegerObserver;
+use App\Observers\ContratObserver;
+use App\Observers\ControleObserver;
+use App\Observers\LocationObserver;
 use App\Observers\VehiculeObserver;
+use App\Observers\LivraisonObserver;
+use App\Observers\ConformiteObserver;
+use App\Observers\PermissionObserver;
 
 
 
+use App\Observers\UtilitaireObserver;
+use App\Observers\RestitutionObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
