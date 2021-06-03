@@ -48,7 +48,7 @@ Route::get('/privacy-policy', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/contrat-details/{contrat}', [ContratController::class, 'show'])->name('contrat-details');
 Route::get('/contrat-create', [ContratController::class, 'create'])->name('contrat-create');

@@ -20,6 +20,7 @@ class CreateVehiculesTable extends Migration
             $table->enum('type', AccountType::values());
             $table->string('permis');
             $table->string('marque');
+            $table->string('prix');
             $table->foreignId('team_id');
             $table->timestamps();
         });

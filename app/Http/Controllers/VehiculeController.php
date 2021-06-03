@@ -15,7 +15,7 @@ class VehiculeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'admin'], ['except' => ['index']]);
+        $this->middleware(['auth', 'admin']);
     }
 
     /**
@@ -31,7 +31,8 @@ class VehiculeController extends Controller
                 'uuid' => $vehicule->uuid,
                 'type' => $vehicule->type,
                 'permis' => $vehicule->permis,
-                'marque' => $vehicule->marque
+                'marque' => $vehicule->marque,
+                'image_url' => str_replace('http://localhost', 'http://127.0.0.1:8000', $annonce->getFirstMediaUrl('annonces_images')),
             ];
         })
         // ->whereNotNull('published_at')
@@ -56,18 +57,25 @@ class VehiculeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   Validator::make($data, [
-        'type' => ['required', 'string', 'max:255'],
-        'permis' => ['required', 'string', 'max:255'],
-        'marque' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    ]);
+    {
         $validated = $request->validate([
             'type' => 'required|string|max:255',
             'permis' => 'required|string|max:255',
             'marque' => 'required|string|max:255',
+            'prix'  => 'required|string|max:255',
+            // 'image'  =>  'required|file|mimes:jpeg,png,pdf,jpg|max:8192',
         ]);
+
+        $team = auth()->user()->team();
+
+        dd($team);
         
-        $vehicule = auth()->user()->vehicules()->create($validated);
+        $vehicule = $team->vehicules()->create($validated);
+
+
+        if ($request->hasFile('image')) {
+            $vehicule->addMediaFromRequest('image')->toMediaCollection('vehicules_images');
+        }
 
         if( $vehicule ){
             return back()->withSuccess('Enregistré !');

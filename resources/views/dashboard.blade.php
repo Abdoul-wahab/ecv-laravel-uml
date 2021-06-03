@@ -2,6 +2,21 @@
 
 @section('content')
 <div class="flex flex-wrap -m-4">
+    @if(Auth::user()->isAdmin())
+        <div class="mx-20">
+            cc admin
+        </div>
+    @endif
+    @if(Auth::user()->isClient())
+        <div class="mx-20">
+            cc client
+        </div>
+    @endif
+    @if(Auth::user()->isEmploye())
+        <div class="mx-20">
+            cc toto
+        </div>
+    @endif
     {{-- @foreach ($vehicules as $vehicule)
     <div class="lg:w-1/3 md:w-1/3 p-4 w-full">
         <div class="wrapper antialiased text-gray-900">
