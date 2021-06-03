@@ -83,7 +83,7 @@ class ContratController extends Controller
      */
     public function edit(contrat $contrat)
     {
-        return view('contrat.edit-contrat' [ 'contrat' => $contrat ]);
+        return view('contrat.edit-contrat', [ 'contrat' => $contrat ]);
     }
 
     /**
