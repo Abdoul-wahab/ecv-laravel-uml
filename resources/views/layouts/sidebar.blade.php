@@ -47,7 +47,7 @@
                     <div class="flex-grow mt-5 flex flex-col">
                         <nav class="flex-1 bg-white px-2 space-y-1">
                             <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
-                            <a href="{{ route('index') }}" class="@if (Route::current()->getName() === 'dashboard') bg-gray-100 text-gray-900 @else text-gray-600 hover:bg-gray-50 hover:text-gray-900 @endif group rounded-md py-2 px-2 flex items-center text-sm font-medium ">
+                            <a href="#" class="@if (Route::current()->getName() === 'dashboard') bg-gray-100 text-gray-900 @else text-gray-600 hover:bg-gray-50 hover:text-gray-900 @endif group rounded-md py-2 px-2 flex items-center text-sm font-medium ">
                                 <!-- Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500" -->
                                 <svg class="@if (Route::current()->getName() === 'controle') text-gray-500 @else text-gray-400 group-hover:text-gray-500 @endif mr-3 h-6 w-6" x-description="Heroicon name: outline/home"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -61,7 +61,7 @@
 
 
                             <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
-                            <a href="#" class="@if (Route::current()->getName() === 'ajouter') bg-gray-100 text-gray-900 @else text-gray-600 hover:bg-gray-50 hover:text-gray-900 @endif group rounded-md py-2 px-2 flex items-center text-sm font-medium ">
+                            <a href="{{ route('vehicule-create') }}" class="@if (Route::current()->getName() === 'ajouter') bg-gray-100 text-gray-900 @else text-gray-600 hover:bg-gray-50 hover:text-gray-900 @endif group rounded-md py-2 px-2 flex items-center text-sm font-medium ">
                                 <!-- Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500" -->
                                 <svg xmlns="http://www.w3.org/2000/svg" class="@if (Route::current()->getName() === 'controle') text-gray-500 @else text-gray-400 group-hover:text-gray-500 @endif mr-3 h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z" />

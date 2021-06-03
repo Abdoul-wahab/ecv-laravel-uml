@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IsAdmin
 {
@@ -20,6 +21,6 @@ class IsAdmin
             return $next($request);
         }
 
-       return redirect('dashoard')->with('error','Vous n\'avez pas d\'accés admin');
+       return redirect('dashboard')->with('error','Vous n\'avez pas d\'accés admin');
     }
 }

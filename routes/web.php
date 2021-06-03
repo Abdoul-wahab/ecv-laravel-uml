@@ -33,9 +33,9 @@ Route::get('/vehicule', function () {
     return view('vehicule');
 });
 
-// Route::get('/create-vehicule', function () {
-//     return view('vehicule.create-vehicule');
-// });
+Route::get('/create-vehicule', function () {
+    return view('vehicule.create-vehicule');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
