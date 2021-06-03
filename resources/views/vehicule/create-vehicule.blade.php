@@ -1,11 +1,10 @@
 @extends('layouts.sidebar')
 
 @section('content')
-
+<form method="POST" action="{{ route('vehicule-store') }}">
+  @csrf
 <div class="flex mt-10 items-center justify-center">
   <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8 items-center bg-white rounded-lg w-8/12">
-    <form method="POST" action="{{ route('vehicule-store') }}">
-      @csrf
       <div class="sm:col-span-2">
         <label for="type" class="block text-sm font-medium text-gray-700">Type de véhicule *</label>
         <div class="mt-1">
@@ -83,7 +82,7 @@
             Créer
         </button>
       </div>
-    </form>
   </div>
 </div>
+</form>
 @endsection

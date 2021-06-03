@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employe;
 use Illuminate\Http\Request;
 
 class EmployeController extends Controller
@@ -14,19 +13,19 @@ class EmployeController extends Controller
      */
     public function index()
     {
-        $employes = Employe::all()
-        ->map(function ($employe) {
-            return [
-                'uuid' => $employe->uuid,
-                'first_name' => $employe->first_name,
-                'last_name' => $employe->last_name,
-                'email' => $employe->email,
-                'password' => $employe->password,
-            ];
-        })
-        // ->whereNotNull('published_at')
-        ->sortBy('created_at');
-        return view('employe.index', [ 'employes' => $employes ]);
+        // $employes = Employe::all()
+        // ->map(function ($employe) {
+        //     return [
+        //         'uuid' => $employe->uuid,
+        //         'first_name' => $employe->first_name,
+        //         'last_name' => $employe->last_name,
+        //         'email' => $employe->email,
+        //         'password' => $employe->password,
+        //     ];
+        // })
+        // // ->whereNotNull('published_at')
+        // ->sortBy('created_at');, [ 'employes' => $employes ]
+        return view('employe.index');
     }
 
     /**

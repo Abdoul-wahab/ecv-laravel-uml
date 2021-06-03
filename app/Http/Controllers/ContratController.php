@@ -100,7 +100,6 @@ class ContratController extends Controller
             return back()->withSuccess('Mise à jour !');
         }
         return back()->with('error', 'Une erreur s\'est produite !!');
-        return view('contrat.edit-contrat' [ 'contrat' => $contrat ]);
     }
 
     /**
