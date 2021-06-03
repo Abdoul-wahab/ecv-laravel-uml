@@ -17,7 +17,7 @@ class VehiculeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'admin', 'client', 'employe'], ['except' => ['index']]);
+        $this->middleware(['auth', 'admin'], ['except' => ['index']]);
     }
 
     /**
@@ -64,6 +64,7 @@ class VehiculeController extends Controller
         $validated = $request->validate([
             'type' => 'required|string|max:255',
             'permis' => 'required|string|max:255',
+            'prix' => 'required|string|max:255',
             'marque' => 'required|string|max:255',
         ]);
 
@@ -89,20 +90,19 @@ class VehiculeController extends Controller
      * @param  \App\Models\Vehicule  $vehicule
      * @return \Illuminate\Http\Response
      */
-    public function show(Vehicule $vehicule)
+    public function show( $uuid )
     {
-        return view('vehicule.vehicule-details', [ 'vehicule' => $vehicule ]);
+        return view('vehicule.vehicule-details', [ 'vehicule' => Vehicule::where('uuid', $uuid)->first() ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Vehicule  $vehicule
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vehicule $vehicule)
+    public function edit($uuid)
     {
-        return view('vehicule.edit-vehicule', [ 'vehicule' => $vehicule ]);
+        return view('vehicule.edit-vehicule', [ 'vehicule' => Vehicule::where('uuid', $uuid)->first() ]);
     }
 
     /**

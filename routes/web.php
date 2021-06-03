@@ -78,7 +78,7 @@ Route::get('/update-location', [LocationController::class, 'update'])->name('upd
 Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');
 Route::post('/location-store', [LocationController::class, 'store'])->name('location-store');
 
-Route::get('/vehicule-details/{vehicule}', [VehiculeController::class, 'show'])->name('vehicule-details');
+Route::get('/vehicule-details/{uuid}', [VehiculeController::class, 'show'])->name('vehicule-details');
 Route::get('/vehicule-create', [VehiculeController::class, 'create'])->name('vehicule-create');
 Route::get('/edit-vehicule/{uuid}', [VehiculeController::class, 'edit'])->name('edit-vehicule');
 Route::get('/update-vehicule', [VehiculeController::class, 'update'])->name('update-vehicule');

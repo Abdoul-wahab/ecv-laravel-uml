@@ -28,7 +28,7 @@
       <div class="sm:col-span-2">
         <label for="type" class="block text-sm font-medium text-gray-700">Type de véhicule *</label>
         <div class="mt-1">
-          <select name="type" id="type" type="text" value="{{ old('type') }}" class="border-2 py-3 px-4 block w-full shadow-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent focus:shadow hover:border-purple-400 @error('type') border-red-500 @enderror"
+          <select name="type" id="type" type="text" value="{{ $vehicule->type }}" class="border-2 py-3 px-4 block w-full shadow-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent focus:shadow hover:border-purple-400 @error('type') border-red-500 @enderror"
               >
               <option value="" ></option>
               <option value="Utilitaire" >Utilitaire</option>
@@ -44,7 +44,7 @@
       <div>
           <label for="prix" class="block text-sm font-medium text-gray-700">Prix HT de location *</label>
           <div class="mt-1">
-              <input type="number" name="prix" id="prix" autocomplete="prix"
+              <input type="number" name="prix" id="prix" autocomplete="prix"  value="{{ $vehicule->prix }}"
                   class="border-2 py-3 px-4 block w-full shadow-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent focus:shadow hover:border-purple-400 @error('type') border-red-500 @enderror">
                 @error('prix')
                   <span class="text-red-500 text-xs" role="alert">
@@ -57,7 +57,7 @@
       <div>
           <label for="permis" class="block text-sm font-medium text-gray-700">Permis *</label>
           <div class="mt-1">
-              <select type="text" name="permis" id="permis" autocomplete="permis" class="border-2 py-3 px-4 block w-full shadow-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent focus:shadow hover:border-purple-400 @error('type') border-red-500 @enderror">
+              <select value="{{ $vehicule->permis }}" type="text" name="permis" id="permis" autocomplete="permis" class="border-2 py-3 px-4 block w-full shadow-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent focus:shadow hover:border-purple-400 @error('type') border-red-500 @enderror">
                   <option value="" ></option>
                   <option value="a" >A</option>
                   <option value="b" >B</option>
@@ -74,7 +74,7 @@
       <div class="sm:col-span-2">
           <label for="marque" class="block text-sm font-medium text-gray-700">Marque de véhicule *</label>
           <div class="mt-1">
-              <input type="text" name="marque" id="marque" autocomplete="marque" class="border-2 py-3 px-4 block w-full shadow-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent focus:shadow hover:border-purple-400 @error('type') border-red-500 @enderror"
+              <input value="{{ $vehicule->marque }}" type="text" name="marque" id="marque" autocomplete="marque" class="border-2 py-3 px-4 block w-full shadow-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent focus:shadow hover:border-purple-400 @error('type') border-red-500 @enderror"
                   >
               @error('marque')
                 <span class="text-red-500 text-xs" role="alert">
@@ -118,7 +118,7 @@
       <div class="sm:col-span-2">
         <button type="submit"
             class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none">
-            Créer
+            Mettre à jour
         </button>
       </div>
   </div>

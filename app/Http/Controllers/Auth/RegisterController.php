@@ -77,12 +77,13 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
         if ( $data['account_type'] === AccountType::BUSINESS ) {
-            $team = Team::create([
-                'type' => AccountType::BUSINESS,
-                'name' => Str::slug($data['first_name'] . ' ' . $data['last_name']) . '-' . $user->uuid,
-                'display_name' => $data['first_name'] . ' ' . $data['last_name'],
-            ]);
-            $user->attachRole('team-admin', $team);
+            $team = Team::where('type', AccountType::LOUEUR)->first();
+            // $team = Team::create([
+            //     'type' => AccountType::BUSINESS,
+            //     'name' => Str::slug($data['first_name'] . ' ' . $data['last_name']) . '-' . $user->uuid,
+            //     'display_name' => $data['first_name'] . ' ' . $data['last_name'],
+            // ]);
+            $user->attachRole('employe', $team);
         }
         return $user;
     }
