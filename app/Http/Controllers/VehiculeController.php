@@ -15,7 +15,7 @@ class VehiculeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'admin']);
+        $this->middleware(['auth', 'admin', 'client', 'employe'], ['except' => ['index']]);
     }
 
     /**
@@ -31,8 +31,7 @@ class VehiculeController extends Controller
                 'uuid' => $vehicule->uuid,
                 'type' => $vehicule->type,
                 'permis' => $vehicule->permis,
-                'marque' => $vehicule->marque,
-                'image_url' => str_replace('http://localhost', 'http://127.0.0.1:8000', $annonce->getFirstMediaUrl('annonces_images')),
+                'marque' => $vehicule->marque
             ];
         })
         // ->whereNotNull('published_at')
@@ -57,25 +56,14 @@ class VehiculeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {  
         $validated = $request->validate([
             'type' => 'required|string|max:255',
             'permis' => 'required|string|max:255',
             'marque' => 'required|string|max:255',
-            'prix'  => 'required|string|max:255',
-            // 'image'  =>  'required|file|mimes:jpeg,png,pdf,jpg|max:8192',
         ]);
-
-        $team = auth()->user()->team();
-
-        dd($team);
         
-        $vehicule = $team->vehicules()->create($validated);
-
-
-        if ($request->hasFile('image')) {
-            $vehicule->addMediaFromRequest('image')->toMediaCollection('vehicules_images');
-        }
+        $vehicule = auth()->user()->vehicules()->create($validated);
 
         if( $vehicule ){
             return back()->withSuccess('Enregistré !');
@@ -104,7 +92,7 @@ class VehiculeController extends Controller
      */
     public function edit(Vehicule $vehicule)
     {
-        return view('vehicule.edit-vehicule', [ 'vehicule' => $vehicule ]);
+        return view('vehicule.edit-vehicule' [ 'vehicule' => $vehicule ]);
     }
 
     /**

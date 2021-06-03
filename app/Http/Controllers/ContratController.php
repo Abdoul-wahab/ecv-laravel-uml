@@ -45,10 +45,6 @@ class ContratController extends Controller
      */
     public function store(Request $request)
     {
-        Validator::make($data, [
-            'prix' => ['required', 'number'],
-            'content' => ['required', 'string', 'max:255'],
-        ]);
         $validated = $request->validate([
             'prix' => 'required|number',
             'content' => 'required|string|max:255',
@@ -83,7 +79,7 @@ class ContratController extends Controller
      */
     public function edit(contrat $contrat)
     {
-        return view('contrat.edit-contrat', [ 'contrat' => $contrat ]);
+        return view('contrat.edit-contrat' [ 'contrat' => $contrat ]);
     }
 
     /**
@@ -100,6 +96,7 @@ class ContratController extends Controller
             return back()->withSuccess('Mise à jour !');
         }
         return back()->with('error', 'Une erreur s\'est produite !!');
+        return view('contrat.edit-contrat' [ 'contrat' => $contrat ]);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employe;
 use Illuminate\Http\Request;
 
 class EmployeController extends Controller
@@ -13,19 +14,19 @@ class EmployeController extends Controller
      */
     public function index()
     {
-        // $employes = Employe::all()
-        // ->map(function ($employe) {
-        //     return [
-        //         'uuid' => $employe->uuid,
-        //         'first_name' => $employe->first_name,
-        //         'last_name' => $employe->last_name,
-        //         'email' => $employe->email,
-        //         'password' => $employe->password,
-        //     ];
-        // })
-        // // ->whereNotNull('published_at')
-        // ->sortBy('created_at');, [ 'employes' => $employes ]
-        return view('employe.index');
+        $employes = Employe::all()
+        ->map(function ($employe) {
+            return [
+                'uuid' => $employe->uuid,
+                'first_name' => $employe->first_name,
+                'last_name' => $employe->last_name,
+                'email' => $employe->email,
+                'password' => $employe->password,
+            ];
+        })
+        // ->whereNotNull('published_at')
+        ->sortBy('created_at');
+        return view('employe.index', [ 'employes' => $employes ]);
     }
 
     /**
@@ -46,12 +47,6 @@ class EmployeController extends Controller
      */
     public function store(Request $request)
     {
-        Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -89,7 +84,7 @@ class EmployeController extends Controller
      */
     public function edit(Employe $employe)
     {
-        return view('employe.edit-employe', [ 'employe' => $employe ]);
+        return view('employe.edit-employe' [ 'employe' => $employe ]);
     }
 
     /**

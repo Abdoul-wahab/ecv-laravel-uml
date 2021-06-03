@@ -43,9 +43,7 @@ class LivraisonController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   Validator::make($data, [
-        'status' => ['required', 'string', 'max:255'],
-    ]);
+    {  
         $validated = $request->validate([
             'status' => 'required|string|max:255',
         ]);
