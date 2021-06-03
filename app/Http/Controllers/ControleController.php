@@ -19,12 +19,7 @@ class ControleController extends Controller
         ->map(function ($controle) {
             return [
                 'uuid' => $controle->uuid,
-                'type' => $controle->type,
-                'marque' => $controle->marque,
-                'created_at' => $controle->created_at,
-                'updated_at' => $controle->updated_at,
-                'image_url' => str_replace('http://localhost', 'http://127.0.0.1:8000', $controle->getFirstMediaUrl('controles_images')),
-            ];
+                ];
         })
         // ->whereNotNull('published_at')
         ->sortBy('created_at');
@@ -49,11 +44,6 @@ class ControleController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'type' => 'required|string',
-            'marque' => 'required|string',
-            'image'  =>  'required|file',
-        ]);
         
         $controle = auth()->user()->controles()->create($validated);
 

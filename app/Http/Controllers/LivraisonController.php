@@ -14,7 +14,16 @@ class LivraisonController extends Controller
      */
     public function index()
     {
-        //
+        $livraisons = Livraison::all()
+        ->map(function ($livraison) {
+            return [
+                'uuid' => $livraison->uuid,
+                'status' => $livraison->status
+            ];
+        })
+        // ->whereNotNull('published_at')
+        ->sortBy('created_at');
+        return view('livraison.index', [ 'livraisons' => $livraisons ]);
     }
 
     /**
@@ -34,8 +43,21 @@ class LivraisonController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   Validator::make($data, [
+        'status' => ['required', 'string', 'max:255'],
+    ]);
+        $validated = $request->validate([
+            'status' => 'required|string|max:255',
+        ]);
+        
+        $livraison = auth()->user()->livraisons()->create($validated);
+
+        if( $livraison ){
+            return back()->withSuccess('Enregistré !');
+        }
+
+        return back()->with('error', 'Une erreur s\'est produite !!');
+        
     }
 
     /**

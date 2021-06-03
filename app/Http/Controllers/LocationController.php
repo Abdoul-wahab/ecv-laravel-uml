@@ -19,12 +19,7 @@ class LocationController extends Controller
         ->map(function ($location) {
             return [
                 'uuid' => $location->uuid,
-                'type' => $location->type,
-                'marque' => $location->marque,
-                'created_at' => $location->created_at,
-                'updated_at' => $location->updated_at,
-                'image_url' => str_replace('http://localhost', 'http://127.0.0.1:8000', $location->getFirstMediaUrl('locations_images')),
-            ];
+                ];
         })
         // ->whereNotNull('published_at')
         ->sortBy('created_at');
@@ -49,12 +44,6 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'type' => 'required|string',
-            'marque' => 'required|string',
-            'image'  =>  'required|file',
-        ]);
-        
         $location = auth()->user()->locations()->create($validated);
 
         if ($request->hasFile('image')) {

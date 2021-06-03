@@ -18,11 +18,10 @@ class EmployeController extends Controller
         ->map(function ($employe) {
             return [
                 'uuid' => $employe->uuid,
-                'type' => $employe->type,
-                'marque' => $employe->marque,
-                'created_at' => $employe->created_at,
-                'updated_at' => $employe->updated_at,
-                'image_url' => str_replace('http://localhost', 'http://127.0.0.1:8000', $employe->getFirstMediaUrl('employes_images')),
+                'first_name' => $employe->first_name,
+                'last_name' => $employe->last_name,
+                'email' => $employe->email,
+                'password' => $employe->password,
             ];
         })
         // ->whereNotNull('published_at')
@@ -48,17 +47,21 @@ class EmployeController extends Controller
      */
     public function store(Request $request)
     {
+        Validator::make($data, [
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
         $validated = $request->validate([
-            'type' => 'required|string',
-            'marque' => 'required|string',
-            'image'  =>  'required|file',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email'  =>  'required|string|email|max:255|unique:users',
+            'password'  =>  'required|string|min:8|confirmed',
+
         ]);
         
         $employe = auth()->user()->employes()->create($validated);
-
-        if ($request->hasFile('image')) {
-            $employe->addMediaFromRequest('image')->toMediaCollection('employes_images');
-        }
 
         if( $employe ){
             return back()->withSuccess('Enregistré !');
