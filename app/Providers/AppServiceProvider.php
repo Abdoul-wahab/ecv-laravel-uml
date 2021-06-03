@@ -53,7 +53,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Team::observe(TeamObserver::class);
 
         // Conformite
         Conformite::observe(ConformiteObserver::class);
