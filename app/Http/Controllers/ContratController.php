@@ -19,10 +19,7 @@ class ContratController extends Controller
             return [
                 'uuid' => $contrat->uuid,
                 'type' => $contrat->type,
-                'marque' => $contrat->marque,
-                'created_at' => $contrat->created_at,
-                'updated_at' => $contrat->updated_at,
-                'image_url' => str_replace('http://localhost', 'http://127.0.0.1:8000', $contrat->getFirstMediaUrl('contrats_images')),
+                'content' => $contrat->content
             ];
         })
         // ->whereNotNull('published_at')
@@ -48,17 +45,16 @@ class ContratController extends Controller
      */
     public function store(Request $request)
     {
+        Validator::make($data, [
+            'prix' => ['required', 'number'],
+            'content' => ['required', 'string', 'max:255'],
+        ]);
         $validated = $request->validate([
-            'type' => 'required|string',
-            'marque' => 'required|string',
-            'image'  =>  'required|file',
+            'prix' => 'required|number',
+            'content' => 'required|string|max:255',
         ]);
         
         $contrat = auth()->user()->contrats()->create($validated);
-
-        if ($request->hasFile('image')) {
-            $contrat->addMediaFromRequest('image')->toMediaCollection('contrats_images');
-        }
 
         if( $contrat ){
             return back()->withSuccess('Enregistré !');

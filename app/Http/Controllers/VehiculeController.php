@@ -30,10 +30,8 @@ class VehiculeController extends Controller
             return [
                 'uuid' => $vehicule->uuid,
                 'type' => $vehicule->type,
-                'marque' => $vehicule->marque,
-                'created_at' => $vehicule->created_at,
-                'updated_at' => $vehicule->updated_at,
-                'image_url' => str_replace('http://localhost', 'http://127.0.0.1:8000', $vehicule->getFirstMediaUrl('vehicules_images')),
+                'permis' => $vehicule->permis,
+                'marque' => $vehicule->marque
             ];
         })
         // ->whereNotNull('published_at')
@@ -58,18 +56,18 @@ class VehiculeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   Validator::make($data, [
+        'type' => ['required', 'string', 'max:255'],
+        'permis' => ['required', 'string', 'max:255'],
+        'marque' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+    ]);
         $validated = $request->validate([
-            'type' => 'required|string',
-            'marque' => 'required|string',
-            'image'  =>  'required|file',
+            'type' => 'required|string|max:255',
+            'permis' => 'required|string|max:255',
+            'marque' => 'required|string|max:255',
         ]);
         
         $vehicule = auth()->user()->vehicules()->create($validated);
-
-        if ($request->hasFile('image')) {
-            $vehicule->addMediaFromRequest('image')->toMediaCollection('vehicules_images');
-        }
 
         if( $vehicule ){
             return back()->withSuccess('Enregistré !');
