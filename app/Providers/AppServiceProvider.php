@@ -50,14 +50,36 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Team::observe(TeamObserver::class);
+
+        // Conformite
+        Conformite::observe(ConformiteObserver::class);
+
         // Contrat
         Contrat::observe(ContratObserver::class);
 
         // Controle
         Controle::observe(ControleObserver::class);
 
+        // Leger
+        Leger::observe(LegerObserver::class);
+
+        // Livraison
+        Livraison::observe(LivraisonObserver::class);
+
         // Location
         Location::observe(LocationObserver::class);
+
+        // Permission
+        Permission::observe(PermissionObserver::class);
+
+        // Restitution
+        Restitution::observe(RestitutionObserver::class);
+
+        // Role
+        Role::observe(RoleObserver::class);
+
+        // Team
+        Team::observe(TeamObserver::class);
 
         // User
         User::observe(UserObserver::class);
@@ -67,8 +89,6 @@ class AppServiceProvider extends ServiceProvider
 
          // Vehicule
          Vehicule::observe(VehiculeObserver::class);
-         
-        // Conformite
-        Conformite::observe(ConformiteObserver::class);
+        
     }
 }
