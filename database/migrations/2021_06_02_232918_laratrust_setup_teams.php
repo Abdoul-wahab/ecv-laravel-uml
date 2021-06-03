@@ -1,6 +1,7 @@
 <?php
-use Illuminate\Database\Migrations\Migration;
+use App\Models\Enums\AccountType;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class LaratrustSetupTeams extends Migration
 {
@@ -14,8 +15,10 @@ class LaratrustSetupTeams extends Migration
         // Create table for storing teams
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
+            $table->uuid('uuid');
             $table->string('name')->unique();
             $table->string('display_name')->nullable();
+            $table->enum('type', AccountType::values());
             $table->string('description')->nullable();
             $table->timestamps();
         });

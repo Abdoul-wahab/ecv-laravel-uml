@@ -15,6 +15,9 @@ class CreateLivraisonsTable extends Migration
     {
         Schema::create('livraisons', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid'); 
+            $table->string('status');
+            $table->foreignId('controle_id')->nullable()->cascadeOnDelete();
             $table->timestamps();
         });
     }

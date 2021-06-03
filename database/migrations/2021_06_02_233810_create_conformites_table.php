@@ -15,6 +15,8 @@ class CreateConformitesTable extends Migration
     {
         Schema::create('conformites', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid');
+            $table->foreignId('controle_id')->nullable()->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -15,11 +15,11 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('id_vehicule');
-            $table->string('id_client');
-            $table->string('id_employe');
-            $table->string('date_emprunt');
+            $table->uuid('uuid');
+            $table->foreignId('vehicule_id');
+            $table->foreignId('contrat_id');
+            $table->foreignId('team_id');
+            $table->timestamps(); 
         });
     }
 

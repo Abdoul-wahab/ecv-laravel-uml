@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Vehicule;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Utilitaire extends Model
 {
@@ -15,6 +17,12 @@ class Utilitaire extends Model
      * @var array
      */
     protected $fillable = [
+        'uuid',
         'poid',
     ];
+
+    public function vehicule(): BelongsTo
+    {
+        return $this->belongsTo(Vehicule::class, 'vehicule_id', 'id');
+    }
 }

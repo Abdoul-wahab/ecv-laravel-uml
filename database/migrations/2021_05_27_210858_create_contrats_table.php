@@ -15,10 +15,13 @@ class CreateContratsTable extends Migration
     {
         Schema::create('contrats', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid');
+            $table->string('prix');
+            $table->string('content');
+            $table->timestamp('date');
+            $table->foreignId('user_id');
+            $table->foreignId('client_id');
             $table->timestamps();
-            $table->string('id_client');
-            $table->string('id_vehicule');
-            $table->string('id_vehicule');
         });
     }
 

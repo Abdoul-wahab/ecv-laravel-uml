@@ -6,6 +6,7 @@ use App\Models\Enums\AccountType;
 use Illuminate\Notifications\Notifiable;
 use Laratrust\Traits\LaratrustUserTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -20,6 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'uuid',
         'last_name',
         'first_name',
         'email',
@@ -59,17 +61,5 @@ class User extends Authenticatable
     public function hasTeam(): bool
     {
         return $this->rolesTeams()->where('type', AccountType::LOUEUR)->exists();
-    }
-
-
-
-    public function registerMediaCollections(): void
-    {
-        $this->addMediaCollection('users_images')
-            ->useDisk('users');
-        
-        $this->addMediaCollection('cover_picture')
-            ->singleFile()
-            ->useDisk('users');
     }
 }

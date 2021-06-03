@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRestitutionsTable extends Migration
+class UtilitaireTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateRestitutionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('restitutions', function (Blueprint $table) {
+        Schema::create('utilitaires', function (Blueprint $table) {
             $table->id();
-            $table->string('status');
-            $table->foreignId('controle_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->uuid('uuid');
+            $table->string('poid');
+            $table->foreignId('vehicule_id')->nullable()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateRestitutionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('restitutions');
+        Schema::dropIfExists('utilitaires');
     }
 }

@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Enums\AccountType;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateVehiculesTable extends Migration
 {
@@ -15,11 +16,12 @@ class CreateVehiculesTable extends Migration
     {
         Schema::create('vehicules', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
+            $table->uuid('uuid');
+            $table->enum('type', AccountType::values());
+            $table->string('permis');
             $table->string('marque');
+            $table->foreignId('team_id');
             $table->timestamps();
-            $table->string('type');
-            $table->string('marque');
         });
     }
 
