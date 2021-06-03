@@ -102,7 +102,7 @@ class VehiculeController extends Controller
      */
     public function edit(Vehicule $vehicule)
     {
-        return view('vehicule.edit-vehicule' [ 'vehicule' => $vehicule ]);
+        return view('vehicule.edit-vehicule', [ 'vehicule' => $vehicule ]);
     }
 
     /**
