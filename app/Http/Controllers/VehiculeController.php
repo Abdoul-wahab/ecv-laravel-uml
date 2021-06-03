@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Team;
 use App\Models\Vehicule;
 use Illuminate\Http\Request;
+use App\Models\Enums\AccountType;
 
 class VehiculeController extends Controller
 {
@@ -32,7 +34,8 @@ class VehiculeController extends Controller
                 'type' => $vehicule->type,
                 'permis' => $vehicule->permis,
                 'marque' => $vehicule->marque,
-                'image_url' => str_replace('http://localhost', 'http://127.0.0.1:8000', $annonce->getFirstMediaUrl('annonces_images')),
+                'created_at' => $vehicule->created_at,
+                // 'image_url' => str_replace('http://localhost', 'http://127.0.0.1:8000', $vehicule->getFirstMediaUrl('annonces_images')),
             ];
         })
         // ->whereNotNull('published_at')
@@ -66,12 +69,9 @@ class VehiculeController extends Controller
             // 'image'  =>  'required|file|mimes:jpeg,png,pdf,jpg|max:8192',
         ]);
 
-        $team = auth()->user()->team();
-
-        dd($team);
+        $team = Team::where('type', AccountType::LOUEUR)->first();
         
         $vehicule = $team->vehicules()->create($validated);
-
 
         if ($request->hasFile('image')) {
             $vehicule->addMediaFromRequest('image')->toMediaCollection('vehicules_images');

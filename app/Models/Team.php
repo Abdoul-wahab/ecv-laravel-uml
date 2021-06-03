@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\Vehicule;
 use Laratrust\Models\LaratrustTeam;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Team extends LaratrustTeam
 {

@@ -16,7 +16,6 @@ use App\Models\Permission;
 use App\Models\Utilitaire;
 use App\Models\Restitution;
 
-use App\Observers\RoleObserver;
 use App\Observers\TeamObserver;
 use App\Observers\UserObserver;
 use App\Observers\LegerObserver;
@@ -77,9 +76,6 @@ class AppServiceProvider extends ServiceProvider
 
         // Restitution
         Restitution::observe(RestitutionObserver::class);
-
-        // Role
-        Role::observe(RoleObserver::class);
 
         // Team
         Team::observe(TeamObserver::class);

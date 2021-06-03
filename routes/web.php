@@ -73,14 +73,14 @@ Route::post('/employe-store', [EmployeController::class, 'store'])->name('employ
 
 Route::get('/location-details/{employe}', [LocationController::class, 'show'])->name('location-details');
 Route::get('/location-create', [LocationController::class, 'create'])->name('location-create');
-Route::get('/edit-location/{employe}', [LocationController::class, 'edit'])->name('edit-location');
+Route::get('/edit-location/{id}', [LocationController::class, 'edit'])->name('edit-location');
 Route::get('/update-location', [LocationController::class, 'update'])->name('update-location');
 Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');
 Route::post('/location-store', [LocationController::class, 'store'])->name('location-store');
 
 Route::get('/vehicule-details/{vehicule}', [VehiculeController::class, 'show'])->name('vehicule-details');
 Route::get('/vehicule-create', [VehiculeController::class, 'create'])->name('vehicule-create');
-Route::get('/edit-vehicule/{vehicule}', [VehiculeController::class, 'edit'])->name('edit-vehicule');
+Route::get('/edit-vehicule/{uuid}', [VehiculeController::class, 'edit'])->name('edit-vehicule');
 Route::get('/update-vehicule', [VehiculeController::class, 'update'])->name('update-vehicule');
 Route::get('/vehicules', [VehiculeController::class, 'index'])->name('vehicules.index');
 Route::post('/vehicule-store', [VehiculeController::class, 'store'])->name('vehicule-store');

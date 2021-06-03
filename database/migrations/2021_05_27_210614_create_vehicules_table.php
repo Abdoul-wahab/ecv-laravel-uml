@@ -17,7 +17,7 @@ class CreateVehiculesTable extends Migration
         Schema::create('vehicules', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid');
-            $table->enum('type', AccountType::values());
+            $table->string('type');
             $table->string('permis');
             $table->string('marque');
             $table->string('prix');
