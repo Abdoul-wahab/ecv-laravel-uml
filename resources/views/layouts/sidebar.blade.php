@@ -156,16 +156,6 @@
                         </form>
                     </div>
                     <div class="ml-4 flex items-center md:ml-6">
-                            <span class="sr-only">View notifications</span>
-                            <svg class="h-6 w-6" x-description="Heroicon name: outline/bell"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
-                                </path>
-                            </svg>
-                        </button>
-
                         <!-- Profile dropdown -->
                         <div x-data="{ open: false }" @keydown.escape.stop="open = false" @click.away="open = false"
                             class="ml-3 relative">
@@ -183,12 +173,8 @@
                 </div>
             </div>
 
-            <main class="flex-1 relative overflow-y-auto focus:outline-none" tabindex="0" x-data=""
-                x-init="$el.focus()">
+            <main class="flex-1 relative overflow-y-auto focus:outline-none">
                 <div class="py-6">
-                    <div class="px-4 sm:px-6 md:px-0">
-                        <h1 class="text-2xl font-semibold text-gray-900">Mes annonces</h1>
-                    </div>
                     <div class="px-4 sm:px-6 md:px-0">
                         <!-- Replace with your content -->
                         <div class="py-4">
