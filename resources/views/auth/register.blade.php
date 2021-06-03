@@ -41,6 +41,26 @@
                             @enderror
                         </div>
                     </div>
+
+                    <div cclass="-mx-3 md:flex mb-6">
+                        <span class="text-gray-500">Type de compte</span>
+                        <div class="mt-2 mb-6">
+                          <label class="inline-flex items-center">
+                            <input type="radio" class="form-radio" name="account_type" value="personel">
+                            <span class="ml-2 text-gray-500">Personel</span>
+                          </label>
+                          <label class="inline-flex items-center ml-6">
+                            <input type="radio" class="form-radio" name="account_type" value="business">
+                            <span class="ml-2 text-gray-500">Entreprise</span>
+                          </label>
+                          @error('account_type')
+                                <span class="text-red-500 text-xs" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
                     <div class="-mx-3 md:flex mb-6">
                         <div class="md:w-full px-3">
                             <input name="password" id="password" type="password"

@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class VehiculeController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth', 'admin', 'client', 'employe'], ['except' => ['index']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

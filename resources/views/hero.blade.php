@@ -49,6 +49,55 @@
         </div>
     </div>
 
+    <div class="mt-16">
+        <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
+            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('{{ asset('img/unnamed.jpeg')}}')">
+                    <a href="#" class="p-2 rounded-full bg-purple-600 text-white mx-5 -mb-4 hover:bg-purple-500 focus:outline-none focus:bg-purple-500">
+                        Louer
+                    </a>
+                </div>
+                <div class="px-5 py-3">
+                    <h3 class="text-gray-700 uppercase">Chanel</h3>
+                    <span class="text-gray-500 mt-2">$12</span>
+                </div>
+            </div>
+            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('{{ asset('img/unnamed.jpeg')}}')">
+                    <a href="#" class="p-2 rounded-full bg-purple-600 text-white mx-5 -mb-4 hover:bg-purple-500 focus:outline-none focus:bg-purple-500">
+                        Louer
+                    </a>
+                </div>
+                <div class="px-5 py-3">
+                    <h3 class="text-gray-700 uppercase">Man Mix</h3>
+                    <span class="text-gray-500 mt-2">$12</span>
+                </div>
+            </div>
+            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('{{ asset('img/unnamed.jpeg')}}')">
+                    <a href="#" class="p-2 rounded-full bg-purple-600 text-white mx-5 -mb-4 hover:bg-purple-500 focus:outline-none focus:bg-purple-500">
+                        Louer
+                    </a>
+                </div>
+                <div class="px-5 py-3">
+                    <h3 class="text-gray-700 uppercase">Classic watch</h3>
+                    <span class="text-gray-500 mt-2">$12</span>
+                </div>
+            </div>
+            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('{{ asset('img/unnamed.jpeg')}}')">
+                    <a href="#" class="p-2 rounded-full bg-purple-600 text-white mx-5 -mb-4 hover:bg-purple-500 focus:outline-none focus:bg-purple-500">
+                        Louer
+                    </a>
+                </div>
+                <div class="px-5 py-3">
+                    <h3 class="text-gray-700 uppercase">woman mix</h3>
+                    <span class="text-gray-500 mt-2">$12</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- <section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-wrap -m-4">

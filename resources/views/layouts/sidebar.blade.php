@@ -47,9 +47,9 @@
                     <div class="flex-grow mt-5 flex flex-col">
                         <nav class="flex-1 bg-white px-2 space-y-1">
                             <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
-                            <a href="#" class="bg-gray-100 text-gray-900 group rounded-md py-2 px-2 flex items-center text-sm font-medium">
+                            <a href="#" class="@if (Route::current()->getName() === 'dashboard') bg-gray-100 text-gray-900 @else text-gray-600 hover:bg-gray-50 hover:text-gray-900 @endif group rounded-md py-2 px-2 flex items-center text-sm font-medium ">
                                 <!-- Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500" -->
-                                <svg class="text-gray-500 mr-3 h-6 w-6" x-description="Heroicon name: outline/home"
+                                <svg class="@if (Route::current()->getName() === 'controle') text-gray-500 @else text-gray-400 group-hover:text-gray-500 @endif mr-3 h-6 w-6" x-description="Heroicon name: outline/home"
                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -59,24 +59,27 @@
                                 Véhicules
                             </a>
 
-                            <a href="#" class=" text-gray-600 hover:bg-gray-50 hover:text-gray-900 group rounded-md py-2 px-2 flex items-center text-sm font-medium ">
-                                <svg xmlns="http://www.w3.org/2000/svg" class=" text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6 " viewBox="0 0 24 24" fill="currentColor">
+
+                            <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:bg-gray-50 hover:text-gray-900" -->
+                            <a href="#" class="@if (Route::current()->getName() === 'ajouter') bg-gray-100 text-gray-900 @else text-gray-600 hover:bg-gray-50 hover:text-gray-900 @endif group rounded-md py-2 px-2 flex items-center text-sm font-medium ">
+                                <!-- Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500" -->
+                                <svg xmlns="http://www.w3.org/2000/svg" class="@if (Route::current()->getName() === 'controle') text-gray-500 @else text-gray-400 group-hover:text-gray-500 @endif mr-3 h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z" />
                                 </svg>
                                 Ajouter un vehicule
                             </a>
 
-                            <a href="#" class=" text-gray-600 hover:bg-gray-50 hover:text-gray-900 group rounded-md py-2 px-2 flex items-center text-sm font-medium ">
+                            <a href="#" class="@if (Route::current()->getName() === 'ajouter') bg-gray-100 text-gray-900 @else text-gray-600 hover:bg-gray-50 hover:text-gray-900 @endif group rounded-md py-2 px-2 flex items-center text-sm font-medium ">
 
-                                <svg xmlns="http://www.w3.org/2000/svg" class=" text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="@if (Route::current()->getName() === 'controle') text-gray-500 @else text-gray-400 group-hover:text-gray-500 @endif mr-3 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                 </svg>
                                 Contrôler
                             </a>
 
-                            <a href="#" class=" text-gray-600 hover:bg-gray-50 hover:text-gray-900 group rounded-md py-2 px-2 flex items-center text-sm font-medium ">
-                                <svg class=" text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6 " x-description="Heroicon name: outline/folder" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            <a href="#" class="@if (Route::current()->getName() === 'ajouter') bg-gray-100 text-gray-900 @else text-gray-600 hover:bg-gray-50 hover:text-gray-900 @endif group rounded-md py-2 px-2 flex items-center text-sm font-medium ">
+                                <svg class="@if (Route::current()->getName() === 'controle') text-gray-500 @else text-gray-400 group-hover:text-gray-500 @endif mr-3 h-6 w-6" x-description="Heroicon name: outline/folder" xmlns="http://www.w3.org/2000/svg" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z">
@@ -85,8 +88,8 @@
                                 Contrôler
                             </a>
 
-                            <a href="#" class=" text-gray-600 hover:bg-gray-50 hover:text-gray-900 group rounded-md py-2 px-2 flex items-center text-sm font-medium ">
-                                <svg class=" text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6 " x-description="Heroicon name: outline/calendar" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            <a href="#" class="@if (Route::current()->getName() === 'ajouter') bg-gray-100 text-gray-900 @else text-gray-600 hover:bg-gray-50 hover:text-gray-900 @endif group rounded-md py-2 px-2 flex items-center text-sm font-medium ">
+                                <svg class="@if (Route::current()->getName() === 'controle') text-gray-500 @else text-gray-400 group-hover:text-gray-500 @endif mr-3 h-6 w-6" x-description="Heroicon name: outline/calendar" xmlns="http://www.w3.org/2000/svg" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
@@ -95,8 +98,8 @@
                                 Désactivés
                             </a>
 
-                            <a href="#" class=" text-gray-600 hover:bg-gray-50 hover:text-gray-900 group rounded-md py-2 px-2 flex items-center text-sm font-medium ">
-                                <svg class=" text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6 " x-description="Heroicon name: outline/inbox" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            <a href="#" class="@if (Route::current()->getName() === 'ajouter') bg-gray-100 text-gray-900 @else text-gray-600 hover:bg-gray-50 hover:text-gray-900 @endif group rounded-md py-2 px-2 flex items-center text-sm font-medium ">
+                                <svg class="@if (Route::current()->getName() === 'controle') text-gray-500 @else text-gray-400 group-hover:text-gray-500 @endif mr-3 h-6 w-6" x-description="Heroicon name: outline/inbox" xmlns="http://www.w3.org/2000/svg" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4">
@@ -105,10 +108,10 @@
                                 Documents
                             </a>
 
-                            <a href="{{ route('logout') }}" class=" text-gray-600 hover:bg-gray-50 hover:text-gray-900 group rounded-md py-2 px-2 flex items-center text-sm font-medium "
+                            <a href="{{ route('logout') }}" class="@if (Route::current()->getName() === 'logout') bg-gray-100 text-gray-900 @else text-gray-600 hover:bg-gray-50 hover:text-gray-900 @endif group rounded-md py-2 px-2 flex items-center text-sm font-medium "
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                                  <svg xmlns="http://www.w3.org/2000/svg" class=" text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <svg xmlns="http://www.w3.org/2000/svg" class="@if (Route::current()->getName() === 'controle') text-gray-500 @else text-gray-400 group-hover:text-gray-500 @endif mr-3 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                                   </svg>
                                   {{ __('Déconnexion') }}

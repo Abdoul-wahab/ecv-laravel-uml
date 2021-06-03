@@ -62,4 +62,19 @@ class User extends Authenticatable
     {
         return $this->rolesTeams()->where('type', AccountType::LOUEUR)->exists();
     }
+
+    public function isAdmin(): bool
+    {
+        return $this->hasRole('super-admin');
+    }
+
+    public function isEmploye(): bool
+    {
+        return $this->hasRole('employe');
+    }
+
+    public function isClient(): bool
+    {
+        return $this->hasRole('team-admin');
+    }
 }

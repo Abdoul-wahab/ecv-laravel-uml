@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->foreignId('team_id')->cascadeOnDelete();
+            $table->foreignId('team_id')->nullable()->cascadeOnDelete();
             $table->rememberToken();
             $table->timestamps();
         });

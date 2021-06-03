@@ -3,29 +3,31 @@
 namespace App\Providers;
 
 // Contrat
-use App\Models\Contrat;
-use App\Observers\ContratObserver;
+use App\Models\Team;
+use App\Models\User;
 
 // Controle
+use App\Models\Contrat;
 use App\Models\Controle;
-use App\Observers\ControleObserver;
 
 // Location
 use App\Models\Location;
-use App\Observers\LocationObserver;
+use App\Models\Vehicule;
 
 // User
-use App\Models\User;
-use App\Observers\UserObserver;
+use App\Models\Utilitaire;
+use App\Observers\TeamObserver;
 
 // Utilitaire
-use App\Models\Utilitaire;
-use App\Observers\UtilitaireObserver;
+use App\Observers\UserObserver;
+use App\Observers\ContratObserver;
 
 // Vehicule
-use App\Models\Vehicule;
-use App\Observers\VehiculeObserver;
+use App\Observers\ControleObserver;
+use App\Observers\LocationObserver;
 
+use App\Observers\VehiculeObserver;
+use App\Observers\UtilitaireObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -47,6 +49,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Team::observe(TeamObserver::class);
         // Contrat
         Contrat::observe(ContratObserver::class);
 

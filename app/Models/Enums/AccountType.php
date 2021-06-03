@@ -7,7 +7,8 @@ class AccountType
     use HasEnums;
 
     const LOUEUR = 'loueur';
-    const CLIENT = 'clien';
+    const BUSINESS = 'business';
+    const PERSONEL = 'personel';
     const EMPLOYE = 'employe';
     
 }
