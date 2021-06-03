@@ -67,5 +67,8 @@ class AppServiceProvider extends ServiceProvider
 
          // Vehicule
          Vehicule::observe(VehiculeObserver::class);
+         
+        // Conformite
+        Conformite::observe(ConformiteObserver::class);
     }
 }
