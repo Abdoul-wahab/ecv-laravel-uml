@@ -28,7 +28,7 @@ class LocationController extends Controller
         })
         // ->whereNotNull('published_at')
         ->sortBy('created_at');
-        return view('location', [ 'locations' => $locations ]);
+        return view('location.index', [ 'locations' => $locations ]);
     }
 
     /**
@@ -38,7 +38,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        return view('create-location');
+        return view('location.create-location');
     }
 
     /**
@@ -77,7 +77,7 @@ class LocationController extends Controller
      */
     public function show(Location $location)
     {
-        return view('location', [ 'location' => $location ]);
+        return view('location.location-details', [ 'location' => $location ]);
     }
 
     /**
@@ -88,7 +88,7 @@ class LocationController extends Controller
      */
     public function edit(Location $location)
     {
-        return view('edit-location' [ 'location' => $location ]);
+        return view('location.edit-location' [ 'location' => $location ]);
     }
 
     /**
@@ -105,7 +105,6 @@ class LocationController extends Controller
             return back()->withSuccess('Mise à jour !');
         }
         return back()->with('error', 'Une erreur s\'est produite !!');
-        return view('edit-location' [ 'location' => $location ]);
     }
 
     /**

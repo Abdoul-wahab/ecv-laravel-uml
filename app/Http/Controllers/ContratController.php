@@ -27,7 +27,7 @@ class ContratController extends Controller
         })
         // ->whereNotNull('published_at')
         ->sortBy('created_at');
-        return view('contrat', [ 'contrats' => $contrats ]);
+        return view('contrat.index', [ 'contrats' => $contrats ]);
     }
 
     /**
@@ -37,7 +37,7 @@ class ContratController extends Controller
      */
     public function create()
     {
-        return view('create-contrat');
+        return view('contrat.create-contrat');
     }
 
     /**
@@ -76,7 +76,7 @@ class ContratController extends Controller
      */
     public function show(contrat $contrat)
     {
-        return view('contrat', [ 'contrat' => $contrat ]);
+        return view('contrat.contrat-details', [ 'contrat' => $contrat ]);
     }
 
     /**
@@ -87,7 +87,7 @@ class ContratController extends Controller
      */
     public function edit(contrat $contrat)
     {
-        return view('edit-contrat' [ 'contrat' => $contrat ]);
+        return view('contrat.edit-contrat' [ 'contrat' => $contrat ]);
     }
 
     /**
@@ -104,7 +104,7 @@ class ContratController extends Controller
             return back()->withSuccess('Mise à jour !');
         }
         return back()->with('error', 'Une erreur s\'est produite !!');
-        return view('edit-contrat' [ 'contrat' => $contrat ]);
+        return view('contrat.edit-contrat' [ 'contrat' => $contrat ]);
     }
 
     /**

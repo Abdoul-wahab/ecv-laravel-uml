@@ -27,7 +27,7 @@ class EmployeController extends Controller
         })
         // ->whereNotNull('published_at')
         ->sortBy('created_at');
-        return view('employe', [ 'employes' => $employes ]);
+        return view('employe.index', [ 'employes' => $employes ]);
     }
 
     /**
@@ -37,7 +37,7 @@ class EmployeController extends Controller
      */
     public function create()
     {
-        return view('create-employe');
+        return view('employe.create-employe');
     }
 
     /**
@@ -76,7 +76,7 @@ class EmployeController extends Controller
      */
     public function show(Employe $employe)
     {
-        return view('employe', [ 'employe' => $employe ]);
+        return view('employe.employe-details', [ 'employe' => $employe ]);
     }
 
     /**
@@ -87,7 +87,7 @@ class EmployeController extends Controller
      */
     public function edit(Employe $employe)
     {
-        return view('edit-employe' [ 'employe' => $employe ]);
+        return view('employe.edit-employe' [ 'employe' => $employe ]);
     }
 
     /**
@@ -104,7 +104,6 @@ class EmployeController extends Controller
             return back()->withSuccess('Mise à jour !');
         }
         return back()->with('error', 'Une erreur s\'est produite !!');
-        return view('edit-employe' [ 'employe' => $employe ]);
     }
 
     /**

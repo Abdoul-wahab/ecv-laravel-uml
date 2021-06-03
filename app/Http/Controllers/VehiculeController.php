@@ -38,7 +38,7 @@ class VehiculeController extends Controller
         })
         // ->whereNotNull('published_at')
         ->sortBy('created_at');
-        return view('vehicule', [ 'vehicules' => $vehicules ]);
+        return view('vehicule.index', [ 'vehicules' => $vehicules ]);
     }
 
     /**
@@ -48,7 +48,7 @@ class VehiculeController extends Controller
      */
     public function create()
     {
-        return view('create-vehicule');
+        return view('vehicule.create-vehicule');
     }
 
     /**
@@ -87,7 +87,7 @@ class VehiculeController extends Controller
      */
     public function show(Vehicule $vehicule)
     {
-        return view('vehicule', [ 'vehicule' => $vehicule ]);
+        return view('vehicule.vehicule-details', [ 'vehicule' => $vehicule ]);
     }
 
     /**
@@ -98,7 +98,7 @@ class VehiculeController extends Controller
      */
     public function edit(Vehicule $vehicule)
     {
-        return view('edit-vehicule' [ 'vehicule' => $vehicule ]);
+        return view('vehicule.edit-vehicule' [ 'vehicule' => $vehicule ]);
     }
 
     /**

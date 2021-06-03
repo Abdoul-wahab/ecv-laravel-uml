@@ -28,7 +28,7 @@ class ControleController extends Controller
         })
         // ->whereNotNull('published_at')
         ->sortBy('created_at');
-        return view('controle', [ 'controles' => $controles ]);
+        return view('controle.index', [ 'controles' => $controles ]);
     }
 
     /**
@@ -38,7 +38,7 @@ class ControleController extends Controller
      */
     public function create()
     {
-        return view('create-controle');
+        return view('controle.create-controle');
     }
 
     /**
@@ -77,7 +77,7 @@ class ControleController extends Controller
      */
     public function show(Controle $controle)
     {
-        return view('controle', [ 'controle' => $controle ]);
+        return view('controle.controle-details', [ 'controle' => $controle ]);
     }
 
     /**
@@ -88,7 +88,7 @@ class ControleController extends Controller
      */
     public function edit(Controle $controle)
     {
-        return view('edit-controle' [ 'controle' => $controle ]);
+        return view('controle.edit-controle' [ 'controle' => $controle ]);
     }
 
     /**
@@ -105,7 +105,6 @@ class ControleController extends Controller
             return back()->withSuccess('Mise à jour !');
         }
         return back()->with('error', 'Une erreur s\'est produite !!');
-        return view('edit-controle' [ 'controle' => $controle ]);
     }
 
     /**
