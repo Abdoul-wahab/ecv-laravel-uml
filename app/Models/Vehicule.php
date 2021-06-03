@@ -20,6 +20,7 @@ class Vehicule extends Model
         'uuid',
         'type',
         'permis',
+        'prix',
         'marque',
     ];
 

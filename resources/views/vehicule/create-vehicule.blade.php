@@ -1,57 +1,55 @@
 @extends('layouts.sidebar')
 
 @section('content')
+
 <div class="flex mt-10 items-center justify-center">
-    <div class="grid bg-white rounded-lg shadow-xl">
-    <form method="POST" action="#">
-      @csrf
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7">
-        <div class="grid grid-cols-1">
-          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Prix de location</label>
-          <input name="prix" id="prix" type="number" value="{{ old('prix') }}" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" placeholder="Prix/location" />
-        </div>
-        <div class="grid grid-cols-1">
-          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Quantite</label>
-          <input name="quantite" id="quantite" type="number" value="{{ old('quantite') }}" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" type="text" placeholder="Quantite" />
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 mt-5 mx-7">
-        <div class="md:w-full">
-          <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Permis</label>
-          <select name="permis" id="permis" type="permis" value="{{ old('permis') }}" 
-            class="w-96 border-2 rounded py-2 w-full hover:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent focus:shadow @error('permis') border-red-500 @enderror">
+  <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8 items-center bg-white rounded-lg w-8/12">
+    <div class="sm:col-span-2">
+      <label for="type" class="block text-sm font-medium text-gray-700">Type de véhicule *</label>
+      <div class="mt-1">
+        <select name="type" id="type" type="text" value="{{ old('type') }}" class="border-2 py-3 px-4 block w-full shadow-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent focus:shadow hover:border-purple-400 @error('type') border-red-500 @enderror"
+            >
             <option value="" ></option>
-            <option value="a" >A</option>
-            <option value="b" >B</option>
-            <option value="c" >C</option>
-          </select>
-          @error('type')
-            <span class="text-red-500 text-xs" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-          @enderror
+            <option value="Utilitaire" >Utilitaire</option>
+            <option value="Leger" >Leger</option>
+        </select>
+      </div>
+  </div>
+    <div>
+        <label for="price" class="block text-sm font-medium text-gray-700">Prix HT de location *</label>
+        <div class="mt-1">
+            <input type="number" name="price" id="price" autocomplete="price"
+                class="border-2 py-3 px-4 block w-full shadow-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent focus:shadow hover:border-purple-400">
         </div>
     </div>
 
-    <div class="grid grid-cols-1 mt-5 mx-7">
-      <div class="md:w-full">
-        <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Type</label>
-        <select name="type" id="type" type="type" value="{{ old('type') }}" 
-          class="w-96 border-2 rounded py-2 w-full hover:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent focus:shadow @error('type') border-red-500 @enderror">
-          <option value="" ></option>
-          <option value="Utilitaire" >Utilitaire</option>
-          <option value="Leger" >Leger</option>
-        </select>
-        @error('type')
-          <span class="text-red-500 text-xs" role="alert">
-              <strong>{{ $message }}</strong>
-          </span>
-        @enderror
-      </div>
+    <div>
+        <label for="light" class="block text-sm font-medium text-gray-700">Permis *</label>
+        <div class="mt-1">
+            <select type="text" name="light" id="light" autocomplete="light" class="border-2 py-3 px-4 block w-full shadow-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent focus:shadow hover:border-purple-400">
+                <option value="" ></option>
+                <option value="a" >A</option>
+                <option value="b" >B</option>
+                <option value="c" >C</option>
+            </select>
+            @error('type')
+              <span class="text-red-500 text-xs" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+            @enderror
+        </div>
     </div>
-  
-    <div class="grid grid-cols-1 mt-5 mx-7">
+
+    <div class="sm:col-span-2">
+        <label for="marque" class="block text-sm font-medium text-gray-700">Marque de véhicule *</label>
+        <div class="mt-1">
+            <input type="text" name="marque" id="marque" autocomplete="marque" class="border-2 py-3 px-4 block w-full shadow-sm border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent focus:shadow hover:border-purple-400"
+                >
+        </div>
+    </div>
+
+
+    <div class="sm:col-span-2">
       <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold mb-1">Upload Photo</label>
         <div class='flex items-center justify-center w-full'>
             <label class='flex flex-col border-4 border-dashed w-full h-32 hover:bg-gray-100 hover:border-purple-300 group'>
@@ -68,21 +66,21 @@
     <script>
         var input = document.getElementById( 'file-upload' );
       var infoArea = document.getElementById( 'file-upload-filename' );
-
       input.addEventListener( 'change', showFileName );
-
       function showFileName( event ) {
           var input = event.srcElement;
           var fileName = input.files[0].name;
           infoArea.textContent = fileName;
       }
     </script>
-  
-    <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>
-      <button class='w-auto bg-purple-500 hover:bg-purple-700 rounded-lg shadow-xl font-medium text-white px-4 py-2'>Create</button>
-    </div>
-    </form>
+
+
+    <div class="sm:col-span-2">
+      <button type="submit"
+          class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none">
+          Créer
+      </button>
     </div>
   </div>
-
+</div>
 @endsection

@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\ContratController;
-use app\Http\Controllers\ControleController;
-use app\Http\Controllers\EmployeController;
-use app\Http\Controllers\LocationController;
-use app\Http\Controllers\VehiculeController;
+use App\Http\Controllers\ContratController;
+use App\Http\Controllers\EmployeController;
+use App\Http\Controllers\ControleController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\VehiculeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
